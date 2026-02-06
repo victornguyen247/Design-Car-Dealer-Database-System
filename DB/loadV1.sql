@@ -1,0 +1,81 @@
+USE car_dealership;
+
+-- Load Person data
+LOAD DATA INFILE 'Person.csv'
+INTO TABLE Person
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+-- Load owner data
+LOAD DATA INFILE 'owner.csv'
+INTO TABLE owner
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+-- Load Location data
+LOAD DATA INFILE 'Location.csv'
+INTO TABLE Location
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+-- Load Location_Phone data
+LOAD DATA INFILE 'Location_Phone.csv'
+INTO TABLE Location_Phone
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+-- Load Client data
+LOAD DATA INFILE 'Client.csv'
+INTO TABLE Client
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+-- Load Employee data
+LOAD DATA INFILE 'Employee.csv'
+INTO TABLE Employee
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+-- Load Vehicle data
+LOAD DATA INFILE 'Vehicle.csv'
+INTO TABLE Vehicle
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+-- Load Service data
+LOAD DATA INFILE 'Service.csv'
+INTO TABLE Service
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+-- Load technical_service data
+LOAD DATA INFILE 'technical_service.csv'
+INTO TABLE technical_service
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+-- Load trading data
+LOAD DATA INFILE 'trading.csv'
+INTO TABLE trading
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
