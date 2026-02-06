@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit Motors | Locations</title>
+
+    <link rel="stylesheet" href="client_home.css">
+
+    <style>
+        body {
+            background: #f5f7fa;
+            padding-top: 90px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .locations-wrapper {
+            width: 90%;
+            max-width: 1500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+        }
+
+        /* Top Search Bar */
+        .location-search {
+            grid-column: span 2;
+            padding: 25px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            gap: 15px;
+        }
+
+        .location-search input,
+        .location-search select {
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            font-size: 16px;
+            width: 260px;
+            background: #f9fafb;
+        }
+
+        
+        .location-list {
+            padding: 30px;
+            height: 650px;
+            overflow-y: scroll;
+        }
+
+        .location-entry {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .location-entry h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .location-entry p {
+            font-size: 15px;
+            margin: 3px 0;
+        }
+
+        .location-phone {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .miles {
+            font-size: 14px;
+            margin-top: 4px;
+            color: #6b7280;
+        }
+
+      
+        .image-area {
+            position: relative;
+            height: 650px;
+            overflow: hidden;
+        }
+
+        .image-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom right, rgba(0,0,0,0.15), rgba(0,0,0,0.45));
+        }
+
+        
+        .image-text {
+            position: absolute;
+            bottom: 35px;
+            left: 35px;
+            color: white;
+            font-size: 34px;
+            font-weight: 800;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        
+        .location-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        .location-list::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        @media(max-width: 1100px) {
+            .locations-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .image-area {
+                height: 420px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="client-nav">
+    <div class="nav-left">SUMMIT MOTORS</div>
+
+    <ul class="nav-links">
+        <li><a href="employee_home.html">Home</a></li>
+        <li><a href="employee_portal.html">Employees</a></li>
+        <li><a href="locations_finder.html" class="active">Locations</a></li>
+        <li><a href="login.html" class="logout">Logout</a></li>
+    </ul>
+</nav>
+
+<h1 style="text-align:center; margin-bottom:20px;">Summit Motors Locations</h1>
+
+<div class="locations-wrapper">
+
+    <!-- Search Bar -->
+    <div class="location-search">
+        <input type="text" placeholder="Search city…">
+        <select>
+            <option>All Categories</option>
+            <option>Dealership</option>
+            <option>Service Center</option>
+            <option>Used Car Lot</option>
+        </select>
+    </div>
+
+    
+    <div class="location-list">
+
+        <div class="location-entry">
+            <h3>Summit Motors – Dallas</h3>
+            <p>123 Main St, Dallas, TX 75201</p>
+            <p class="location-phone">(214) 555-7281</p>
+            <p>Location #: 001</p>
+            <p>Manager: Michael Adams</p>
+            <p>Email: dallas@summitmotors.com</p>
+            <div class="miles">2.1 miles</div>
+        </div>
+
+        <div class="location-entry">
+            <h3>Summit Motors – Austin</h3>
+            <p>88 West Lane, Austin, TX 78701</p>
+            <p class="location-phone">(512) 555-2947</p>
+            <p>Location #: 002</p>
+            <p>Manager: Sarah Johnson</p>
+            <p>Email: austin@summitmotors.com</p>
+            <div class="miles">3.0 miles</div>
+        </div>
+
+        <div class="location-entry">
+            <h3>Summit Motors – Houston</h3>
+            <p>440 Sunset Rd, Houston, TX 77002</p>
+            <p class="location-phone">(713) 555-0038</p>
+            <p>Location #: 003</p>
+            <p>Manager: Jessica Allen</p>
+            <p>Email: houston@summitmotors.com</p>
+            <div class="miles">8.4 miles</div>
+        </div>
+
+    </div>
+
+  
+    <div class="image-area">
+        <img src="rx7.jpeg" alt="Showroom Car">
+        <div class="image-overlay"></div>
+        <div class="image-text">Summit Motors</div>
+    </div>
+
+</div>
+
+</body>
+</html>

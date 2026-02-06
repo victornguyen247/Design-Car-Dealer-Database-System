@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summit Motors | Client Dashboard</title>
+
+    <!-- Logo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Main Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="client_home.css">
+</head>
+<body>
+
+<!-- NAVIGATION BAR  -->
+<nav class="client-nav">
+    <div class="nav-left">SUMMIT MOTORS</div>
+
+    <ul class="nav-links">
+        <li><a href="client_home.html" class="active">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="vehicle.html">Your Vehicles</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="login.html" class="logout">Logout</a></li>
+
+    </ul>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1>Welcome</h1>
+        <p>Summit Motors Client Dashboard.</p>
+
+        <div class="hero-buttons">
+            <a href="#" class="btn-primary">View Profile</a>
+            <a href="#" class="btn-secondary">Browse Inventory</a>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+    <div class="stats-box">
+        <div class="icon">👤</div>
+        <h3>Client Since</h3>
+        <p>2024</p>
+    </div>
+
+    <div class="stats-box">
+        <div class="icon">🚗</div>
+        <h3>Your Vehicles</h3>
+        <p>2 Active</p>
+    </div>
+
+    <div class="stats-box">
+        <div class="icon">🛠️</div>
+        <h3>Services Completed</h3>
+        <p>5 Visits</p>
+    </div>
+
+    <div class="stats-box">
+        <div class="icon">⭐</div>
+        <h3>Client Rating</h3>
+        <p>4.9 / 5</p>
+    </div>
+</section>
+
+<!-- Recommended Vehicles -->
+<div class="recommended-section">
+
+    <h2>Your Recommended Vehicles</h2>
+    <p class="rec-subtitle">Based on your preferences and vehicle history.</p>
+
+    <div class="rec-grid">
+
+        <!-- Vehicle 1 -->
+        <div class="vehicle-card">
+            <img src="typeR.png" alt="2024 Sports Coupe">
+            <h3>2024 Honda Civic Type R</h3>
+            <p class="price">$48,999</p>
+            <button>View Details</button>
+        </div>
+
+        <!-- Vehicle 2 -->
+        <div class="vehicle-card">
+            <img src="escalade.png" alt="2023 Luxury Sedan">
+            <h3>2025 Cadilac Escalade</h3>
+            <p class="price">$90,999</p>
+            <button>View Details</button>
+        </div>
+
+        <!-- Vehicle 3 -->
+        <div class="vehicle-card">
+            <img src="gr86.png" alt="2024 Premium SUV">
+            <h3>2023 Toyota GR86</h3>
+            <p class="price">$24,999</p>
+            <button>View Details</button>
+        </div>
+
+    </div>
+</div>
+
+
+    <!-- VIN Search  -->
+    
+<div class="vin-search-container">
+    <h2>Search Your Vehicle by VIN</h2>
+
+    <div class="vin-search-card">
+        <form class="vin-search-form" onsubmit="return fakeVinSearch()">
+            <input 
+                type="text" 
+                id="vinInput" 
+                maxlength="17" 
+                placeholder="Enter VIN (17 characters)" 
+                required
+            >
+            <button type="submit">Search</button>
+        </form>
+
+        <p id="vinSearchMessage" class="vin-message"></p>
+    </div>
+</div>
+
+
+</section>
+
+<script>
+function fakeVinSearch() {
+    const vin = document.getElementById("vinInput").value.trim();
+    const message = document.getElementById("vinSearchMessage");
+
+    if (vin.length !== 17) {
+        message.textContent = "VIN must be exactly 17 characters.";
+        message.style.color = "#B91C1C";
+        return false;
+    }
+
+ 
+    message.textContent = "Vehicle found! Redirecting...";
+    message.style.color = "#059669";
+
+    setTimeout(() => {
+        window.location.href = "vehicle_details.html"; 
+    }, 800);
+
+    return false;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+/*  FONT and COLORS  */
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    color: #111827;
+    margin: 0;
+}
+
+.background-image {
+    background-image: url('carLogin.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 100vh;      
+    width: 100%;
+    position: fixed;   
+    top: 0;
+    left: 0;
+
+    z-index: 0;
+}
+
+
+.background-image::before {
+    content: "";
+    position: fixed;     
+    inset: 0;
+    background: rgba(11, 13, 23, 0.55);
+    z-index: 0;
+}
+
+/*  PAGE WRAPPER  */
+.login-wrapper {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;   
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    box-sizing: border-box;
+}
+
+/*  LOGIN / REGISTER CARD  */
+.login-card {
+    background: #FFFFFF;
+    width: 420px;
+    padding: 48px;
+    border-radius: 24px;
+    box-shadow: 0px 12px 50px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+.brand-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #0B0D17;
+    margin-bottom: 30px;
+}
+
+
+.login-card h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #6B7280;
+    margin-bottom: 32px;
+}
+
+/*  INPUT STYLING   */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="date"],
+select {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    border: 1px solid #E5E7EB;
+    background: #F9FAFB;
+    font-size: 16px;
+    color: #111827;
+    box-sizing: border-box;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    cursor: pointer;
+
+    
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%236B7280" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+}
+
+
+form input::placeholder {
+    color: #9CA3AF;
+}
+
+/*  LINKS  */
+.forgot {
+    display: block;
+    margin-bottom: 26px;
+    font-size: 14px;
+    color: #4B5563;
+    text-decoration: none;
+}
+
+.register {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 15px;
+}
+
+.register a {
+    font-weight: 600;
+    color: #111827;
+    text-decoration: none;
+}
+
+
+.blue-btn {
+    background: #0047FF;
+    border: none;
+    padding: 16px;
+    width: 100%;
+    color: white;
+    font-size: 17px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.blue-btn:hover {
+    background: #0036CC;
+}
+
+
+.small-label {
+    font-size: 14px;
+    color: #4B5563;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    display: block;
+}
+
+
+@media (max-height: 700px) {
+    .login-wrapper {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 420px;
+        padding: 32px;
+        border-radius: 20px;
+    }
+
+    .brand-logo {
+        font-size: 28px;
+        margin-bottom: 18px;
+    }
+
+    .login-card h1 {
+        font-size: 26px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+}

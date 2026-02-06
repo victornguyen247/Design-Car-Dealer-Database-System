@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summit Motors | Register</title>
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+
+<div class="background-image"></div>
+
+
+<div class="login-wrapper">
+    <div class="login-card">
+
+        <div class="brand-logo">Summit Motors</div>
+
+        <h1>Create Account</h1>
+        <p class="subtitle">client profile registration</p>
+
+        <!-- FAKE EVENT -->
+        <form onsubmit="fakeRegister(event)">
+
+            <input type="text" id="first" placeholder="First Name" required>
+            <input type="text" id="middle" placeholder="Middle Initial">
+            <input type="text" id="last" placeholder="Last Name" required>
+
+            <input type="text" id="address" placeholder="Address" required>
+
+            <label class="small-label">State</label>
+            <select id="state" required>
+                <option value="" disabled selected>Select State</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
+                <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
+                <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
+                <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
+                <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+                <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
+                <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
+                <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
+                <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
+                <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
+                <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
+                <option>WI</option><option>WY</option>
+            </select>
+
+
+            <label class="small-label">Date of Birth</label>
+            <input type="date" id="dob" required>
+
+            <label class="small-label">Gender</label>
+            <select id="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" id="ssn" placeholder="SSN (000-00-0000)" oninput="formatSSN(this)" maxlength="11" required>
+
+            <input type="email" id="email" placeholder="Email" required>
+
+            <input type="tel" id="phone" placeholder="123-456-7890" oninput="formatPhone(this)" maxlength="12" required>
+
+            <input type="password" id="pass" placeholder="Password" required>
+
+            <button type="submit" class="blue-btn">Register</button>
+
+        </form>
+
+        <p class="register">Already have an account? <a href="login.html">Login</a></p>
+
+    </div>
+</div>
+
+<!-- SSN script format -->
+<script>
+function formatSSN(input) {
+    let value = input.value.replace(/\D/g, "");
+    value = value.substring(0, 9);
+    if (value.length > 5) value = value.replace(/^(\d{3})(\d{2})(\d{0,4})$/, "$1-$2-$3");
+    else if (value.length > 3) value = value.replace(/^(\d{3})(\d{0,2})$/, "$1-$2");
+    input.value = value;
+}
+</script>
+
+<!-- Phone script format -->
+<script>
+function formatPhone(input) {
+    let value = input.value.replace(/\D/g, "");
+    value = value.substring(0, 10);
+    if (value.length > 6) value = value.replace(/^(\d{3})(\d{3})(\d{0,4})$/, "$1-$2-$3");
+    else if (value.length > 3) value = value.replace(/^(\d{3})(\d{0,3})$/, "$1-$2");
+    input.value = value;
+}
+</script>
+
+<!-- FAKE REGISTRATION SCRIPT -->
+<script>
+function fakeRegister(e) {
+    e.preventDefault();
+
+    window.location.href = "client_home.html"; 
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Service History</title>
+
+   
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="client_home.css">
+
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   
+    <style>
+           
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+       body {
+            margin: 0;
+            padding-top: 90px;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #1a252f;
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 20px 0 30px;
+            color: var(--primary);
+            font-size: 2.5rem;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-history {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--secondary);
+        }
+
+        .service-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            background: var(--light);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .filter-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .service-item {
+            border-left: 4px solid var(--secondary);
+            padding: 20px;
+            background: var(--light);
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .service-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .service-date {
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-type {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .service-details {
+            margin-bottom: 10px;
+        }
+
+        .service-cost {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .service-milage {
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .service-provider {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .service-notes {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .upcoming-services {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+
+        .upcoming-item {
+            padding: 15px;
+            background: var(--light);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--warning);
+        }
+
+        .upcoming-item h4 {
+            margin-bottom: 5px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .upcoming-due {
+            color: var(--warning);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .upcoming-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .add-service-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .add-service-btn:hover {
+            background: #27ae60;
+        }
+
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+        /*  Nav Bar */
+.client-nav {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 50px;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+
+    position: fixed;    
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;         
+}
+
+.nav-left {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    padding: 10px 22px;
+    font-size: 17px;
+    text-decoration: none;
+    color: #0B0D17;
+    border-radius: 12px;
+    transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+    background: rgba(11, 13, 23, 0.08);
+}
+
+.nav-links a.active {
+    background: #0B0D17;
+    color: white;
+}
+
+.logout {
+    color: #e11d48 !important;
+}
+
+
+
+        
+    </style>
+</head>
+<body>
+    <nav class="client-nav">
+    <div class="nav-left">SUMMIT MOTORS</div>
+
+    <ul class="nav-links">
+        <li><a href="client_home.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="vehicle.html">Your Vehicles</a></li>
+        <li><a href="service.html" class="active">Service</a></li>
+        <li><a href="login.html" class="logout">Logout</a></li>
+    </ul>
+</nav>
+
+    <div class="container">
+
+        <h1 class="page-title">Car Service History</h1>
+        <p class="page-subtitle">Track all your vehicle maintenance and service records in one place</p>
+
+        <div class="stats-summary">
+            <div class="stat-card">
+                <div class="stat-value">18</div>
+                <div class="stat-label">Total Services</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">$2,845</div>
+                <div class="stat-label">Total Spent</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">42,580</div>
+                <div class="stat-label">Current Mileage</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="service-history">
+                <h2 class="section-title">
+                    <i class="fas fa-history"></i>
+                    Service History
+                </h2>
+
+                <div class="service-filters">
+                    <button class="filter-btn active">
+                        <i class="fas fa-list"></i>
+                        All Services
+                    </button>
+                    <button class="filter-btn">
+                        <i class="fas fa-oil-can"></i>
+                        Oil Changes
+                    </button>
+                    <button class="filter-btn">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Brakes
+                    </button>
+                    <button class="filter-btn">
+                        <i class="fas fa-tire"></i>
+                        Tires
+                    </button>
+                    <button class="filter-btn">
+                        <i class="fas fa-cogs"></i>
+                        Other
+                    </button>
+                </div>
+
+                <div class="service-list">
+                    <div class="service-item">
+                        <div class="service-header">
+                            <span class="service-date">
+                                <i class="far fa-calendar"></i>
+                                March 15, 2023
+                            </span>
+                            <span class="service-type">
+                                <i class="fas fa-oil-can"></i>
+                                Oil Change
+                            </span>
+                        </div>
+                        <div class="service-details">
+                            <p>Full synthetic oil change, tire rotation, and multi-point inspection</p>
+                        </div>
+                        <div class="service-cost">
+                            <i class="fas fa-dollar-sign"></i>
+                            $89.99
+                        </div>
+                        <div class="service-milage">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Mileage: 40,120
+                        </div>
+                        <div class="service-provider">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Toyota Service Center - Downtown
+                        </div>
+                        <div class="service-notes">
+                            <strong>Notes:</strong> Technician noted that rear brakes will need replacement in about 5,000 miles.
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-header">
+                            <span class="service-date">
+                                <i class="far fa-calendar"></i>
+                                January 8, 2023
+                            </span>
+                            <span class="service-type">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Brakes
+                            </span>
+                        </div>
+                        <div class="service-details">
+                            <p>Replaced front brake pads and rotors</p>
+                        </div>
+                        <div class="service-cost">
+                            <i class="fas fa-dollar-sign"></i>
+                            $345.00
+                        </div>
+                        <div class="service-milage">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Mileage: 38,450
+                        </div>
+                        <div class="service-provider">
+                            <i class="fas fa-map-marker-alt"></i>
+                            AutoCare Pro
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-header">
+                            <span class="service-date">
+                                <i class="far fa-calendar"></i>
+                                October 22, 2022
+                            </span>
+                            <span class="service-type">
+                                <i class="fas fa-tire"></i>
+                                Tire Service
+                            </span>
+                        </div>
+                        <div class="service-details">
+                            <p>Replaced all four tires with all-season tires</p>
+                        </div>
+                        <div class="service-cost">
+                            <i class="fas fa-dollar-sign"></i>
+                            $620.00
+                        </div>
+                        <div class="service-milage">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Mileage: 36,800
+                        </div>
+                        <div class="service-provider">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Tire World
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-header">
+                            <span class="service-date">
+                                <i class="far fa-calendar"></i>
+                                August 5, 2022
+                            </span>
+                            <span class="service-type">
+                                <i class="fas fa-oil-can"></i>
+                                Oil Change
+                            </span>
+                        </div>
+                        <div class="service-details">
+                            <p>Full synthetic oil change and multi-point inspection</p>
+                        </div>
+                        <div class="service-cost">
+                            <i class="fas fa-dollar-sign"></i>
+                            $79.99
+                        </div>
+                        <div class="service-milage">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Mileage: 35,100
+                        </div>
+                        <div class="service-provider">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Quick Lube Express
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upcoming-services">
+                <h2 class="section-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    Upcoming Services
+                </h2>
+
+                <div class="upcoming-item">
+                    <h4>
+                        <i class="fas fa-oil-can"></i>
+                        Oil Change
+                    </h4>
+                    <p>Next due in approximately 1,200 miles</p>
+                    <div class="upcoming-due">
+                        <i class="far fa-clock"></i>
+                        Due around: June 2023
+                    </div>
+                    <div class="upcoming-description">
+                        Regular oil change with synthetic oil
+                    </div>
+                </div>
+
+                <div class="upcoming-item">
+                    <h4>
+                        <i class="fas fa-tire"></i>
+                        Tire Rotation
+                    </h4>
+                    <p>Next due in approximately 2,500 miles</p>
+                    <div class="upcoming-due">
+                        <i class="far fa-clock"></i>
+                        Due around: August 2023
+                    </div>
+                    <div class="upcoming-description">
+                        Rotate tires to ensure even wear
+                    </div>
+                </div>
+
+                <div class="upcoming-item">
+                    <h4>
+                        <i class="fas fa-tachometer-alt"></i>
+                        Brake Inspection
+                    </h4>
+                    <p>Recommended every 6 months</p>
+                    <div class="upcoming-due">
+                        <i class="far fa-clock"></i>
+                        Due by: September 2023
+                    </div>
+                    <div class="upcoming-description">
+                        Check brake pads and rotors for wear
+                    </div>
+                </div>
+
+                <div class="upcoming-item">
+                    <h4>
+                        <i class="fas fa-wind"></i>
+                        Cabin Air Filter
+                    </h4>
+                    <p>Replace every 15,000 miles</p>
+                    <div class="upcoming-due">
+                        <i class="far fa-clock"></i>
+                        Due by: November 2023
+                    </div>
+                    <div class="upcoming-description">
+                        Replace cabin air filter for better air quality
+                    </div>
+                </div>
+
+                <button class="add-service-btn">
+                    <i class="fas fa-plus"></i>
+                    Add New Service
+                </button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Car Service History Tracker &copy; 2023 | Keep your vehicle in top condition</p>
+        </footer>
+    </div>
+
+    <script>
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', function() {
+
+            
+            document.querySelectorAll('.filter-btn')
+                .forEach(btn => btn.classList.remove('active'));
+
+          
+            this.classList.add('active');
+
+          
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+/*  RESET  */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f9fafb;
+    color: #111827;
+}
+
+/*  Navigation bar  */
+.client-nav {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 50px;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+
+    position: fixed;       
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+
+.nav-left {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    padding: 10px 22px;
+    font-size: 17px;
+    text-decoration: none;
+    color: #0B0D17;
+    border-radius: 12px;
+    transition: 0.25s ease;
+}
+
+/* Hover effects */
+.nav-links a:hover {
+    background: rgba(11, 13, 23, 0.08);
+}
+
+.nav-links a.active {
+    background: #0B0D17;    
+    color: white;           
+}
+
+
+.logout {
+    color: #e11d48 !important;
+}
+
+
+.hero {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+}
+
+.hero-bg {
+    background-image: url('carLogin.jpg');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-overlay {
+    background: rgba(11, 13, 23, 0.55);
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 80px 50px;
+    max-width: 600px;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 46px;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: #e5e7eb;
+}
+
+.hero-buttons {
+    margin-top: 22px;
+    display: flex;
+    gap: 16px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: #0047FF;
+    color: white;
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.8);
+    color: #111827;
+}
+
+/*  Stats Style  */
+.stats-section {
+    background: #f9fafb;
+    padding: 45px 0;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.stats-box {
+    width: 180px;
+}
+
+.stats-box .icon {
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+
+.stats-box h3 {
+    margin: 4px 0 2px 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.stats-box p {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+
+/*  Reccomended cars styling  */
+.recommended-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.recommended-section h2 {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.rec-subtitle {
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.rec-grid {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.vehicle-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    transition: 0.2s ease;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-6px);
+}
+
+.vehicle-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 14px;
+}
+
+.price {
+    color: #0047FF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* VIN Search box and wrappers */
+.vin-search-container {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.vin-search-container h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+
+.vin-search-card {
+    background: white;
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0px 10px 40px rgba(0,0,0,0.12);
+    border: 1px solid #E5E7EB;
+}
+
+
+.vin-search-form {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.vin-search-form input {
+    flex: 1;
+    padding: 16px;
+    font-size: 16px;
+    border: 1px solid #D1D5DB;
+    border-radius: 14px;
+    background: #F9FAFB;
+    outline: none;
+}
+
+.vin-search-form input:focus {
+    border-color: #2563EB;
+}
+
+
+.vin-search-form button {
+    padding: 16px 32px;
+    background: #1D4ED8;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.vin-search-form button:hover {
+    background: #0036CC;
+}
+
+.vin-message {
+    margin-top: 14px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.nav-links {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+
+.client-nav {
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+
+.nav-links a {
+    padding: 10px 16px !important;   
+}
+
+
